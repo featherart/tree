@@ -64,6 +64,14 @@ class TreeNode
 
   # pretty much the same as max but inverse
   def min
+        minNode = self
+
+    @children.each do |subtree|
+      if subtree.min.value < minNode.value
+        minNode = subtree.min
+      end
+    end
+    minNode
   end
 
 end
@@ -87,5 +95,7 @@ puts tree.children[1].children[1].value # 6
 puts "here's the count: " + tree.count.to_s
 puts "here's the sum: " + tree.sum.to_s
 puts "here's the max value: " + tree.max.value.to_s
+puts "here's the min value: " + tree.min.value.to_s
+
 
 binding.pry
